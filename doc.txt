@@ -1,0 +1,10 @@
+Authentication & Permissions
+_________________________________
+Set Permissions and restrictions on who can edit or delete code snippets. Add some advanced behavior to  make sure:
+    1. code snippets are always associated with creator.
+    2. only authenticated user may create snippets
+    3. only the creator of a snippet may update or delete it
+    4. unauthenticated requests should have full read-only access
+
+-----------------------------------------------------------------------------------------
+
