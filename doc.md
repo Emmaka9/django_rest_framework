@@ -37,6 +37,19 @@ class UserSerializer(serializers.ModelSerializer):
 ```
 This code snippet defines a DRF serializer, UserSerializer, for the built-in django `User` model imported from Django's built-in
 authentication system.
+The serializer includes user's basic information and a relation to the snippets that the user might be associated with.
+
+    -> The serializer extends the serializer.ModelSerializer class. serializer.ModelSerializer automatically generates a serializer
+        that corresponds to the user model's fields.
+    -> snippets = serializer.PrimaryKeyRelatedField(many=True, queryset=Snippet.objects.all()) : 
+        A field named snippets in the User class.
+        The field is an instance of PrimaryKeyRelatedField. It will represent the related snippets by their primary key values.
+        - many=True: indicates User can be associated with multiple snippets - one-to-many relationship between user and snippet.
+    -> queryset = Snippet.objects.all(): specifies the queryset that will be used to populate the field. It effectively means any snippet instance can be associated 
+        with a User, as it includes all Snippet instances
+    -> The Meta class inside the serializer class contains metadata about the serializer. 
+        - Here, it specifies that the serializer is for the User model.
+        - fields = ['id', 'username', 'snippets'] : indicates which fields of the user model should be included in the serialized output.
 
 
 
