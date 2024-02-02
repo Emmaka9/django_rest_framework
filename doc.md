@@ -35,6 +35,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ['id', 'username', 'snippets']
 ```
+
 This code snippet defines a DRF serializer, UserSerializer, for the built-in django `User` model imported from Django's built-in
 authentication system.
 The serializer includes user's basic information and a relation to the snippets that the user might be associated with.
