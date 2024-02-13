@@ -22,7 +22,7 @@ class SnippetSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Snippet
-        fields = ['id', 'title', 'code', 'lineos', 'language', 'style', 'owner']
+        fields = ['id', 'title','owner', 'code', 'lineos', 'language', 'style']
 
 
 class UserSerializer(serializers.ModelSerializer):
