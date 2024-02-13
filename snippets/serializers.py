@@ -19,10 +19,10 @@ class SnippetSerializer(serializers.ModelSerializer):
     They define how the data should be serialized and deserialized.
     '''
     # Refactored Code
-    
+    owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
         model = Snippet
-        fields = ['id', 'title', 'code', 'lineos', 'language', 'style']
+        fields = ['id', 'title', 'code', 'lineos', 'language', 'style', 'owner']
 
 
 class UserSerializer(serializers.ModelSerializer):

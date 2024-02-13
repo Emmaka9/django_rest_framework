@@ -5,16 +5,21 @@ REST framework provides a set of already mixed-in generic views that can be used
 
 from snippets.models import Snippet
 from snippets.serializers import SnippetSerializer, UserSerializer
-from rest_framework import generics
+from rest_framework import generics, permissions
 from django.contrib.auth.models import User
 
 class SnippetList(generics.ListCreateAPIView):
-    
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
 
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.owner)
+
 class SnippetDetail(generics.RetrieveUpdateDestroyAPIView):
 
+    
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Snippet.objects.all()
     serializer_class = SnippetSerializer
 
@@ -29,4 +34,4 @@ class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
-
+ 
